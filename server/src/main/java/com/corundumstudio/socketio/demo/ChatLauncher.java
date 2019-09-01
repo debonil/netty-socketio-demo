@@ -8,7 +8,7 @@ public class ChatLauncher {
     public static void main(String[] args) throws InterruptedException {
 
         Configuration config = new Configuration();
-        config.setHostname("localhost");
+        config.setHostname(args[0]);
         config.setPort(9092);
 
         final SocketIOServer server = new SocketIOServer(config);
@@ -17,6 +17,8 @@ public class ChatLauncher {
             public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
                 // broadcast messages to all clients
                 server.getBroadcastOperations().sendEvent("chatevent", data);
+                System.out.println(data.toString());
+                TestPrint.print(data.getMessage());
             }
         });
 

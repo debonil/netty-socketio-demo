@@ -28,4 +28,9 @@ public class ChatObject {
         this.message = message;
     }
 
+	@Override
+	public String toString() {
+		return "ChatObject [userName=" + userName + ", message=" + message + "]";
+	}
+
 }
